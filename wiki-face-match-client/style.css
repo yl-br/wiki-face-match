@@ -1,0 +1,225 @@
+
+.drop-box {
+    /*background: #e4f8e7;*/
+    border: 8px dashed #DDD;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    padding-top: 25px;
+    margin: 10px;
+}
+.dragover {
+    border: 5px dashed blue;
+}
+
+.headline-container{
+    text-align: center;
+}
+
+h1.main-headline{
+    font-weight: 800;
+    font-family:"Comic Sans MS", cursive, sans-serif;
+
+    text-shadow: 0px 4px 6px #140A0A;
+    color: #00c817;
+    font-size: 88px;
+    margin: 0;
+}
+
+h2.second-headline{
+    font-size: 38px;
+}
+
+hr.header-bottom-border{
+    width:  70%;
+    border-bottom: 8px solid #00c800;
+    margin-left: 60px;
+}
+
+hr.header-top-border{
+    width:  60%;
+    border-top: 8px solid #00c800;
+    margin-right: 80px;
+}
+
+
+.gallery-image{
+    cursor: pointer;
+    width:auto;
+    max-width: 200px;
+    height: 150px;
+    max-height:150px;
+    margin: 3px;
+    border:5px solid white;
+}
+
+img.selected-image {
+    min-width: 300px;
+    max-width: 300px;
+    height: 300px;
+    max-height:300px;
+    background: url('img/person-shade.jpg') center no-repeat;
+    background-size: cover;
+}
+
+img.last-uploaded-image{
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    width:auto;
+    max-width: 500px;
+    height: 150px;
+    border:5px solid white;
+}
+
+.gallery-image:hover,.last-uploaded-image:hover{
+    border: 5px solid black;
+}
+
+.selected-image-highlight{
+    border: 5px solid #94c87a !important;
+}
+.play-icon{
+    font-size: 60px;
+}
+
+a.play-btn{
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+img.result-image{
+    display: inline-block;
+    min-width: 300px;
+    height: 300px;
+    max-height:300px;
+}
+.result-container{
+    border-left-style: solid;
+    border-left-color: #00c800;
+    border-left-width: 7px;
+    border-radius: 3px;
+    padding-left: 0!important;
+    margin-bottom: 100px;
+}
+
+
+@-webkit-keyframes scan {
+    /* finish with the scan bar just off the right side */
+    100% { background-position: 50% top; }
+}
+
+
+.gallery-container-loading{
+    background:transparent  url('img/ring.gif') center no-repeat;
+    height: 300px;
+    max-height:300px;
+}
+
+.selected-image-container{
+    position:relative;
+    margin:0 auto;
+    min-width: 200px;
+    max-width: 300px;
+    height: 300px;
+    max-height:300px;
+    text-align: center;
+}
+
+.scanning:after {
+    content: '';
+    /* make the element cover the whole thing */
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* and sit in front */
+    z-index: 1;
+    /* gradient with a radar like fade */
+    background:
+            linear-gradient(to bottom,
+            rgba(0,0,0,.5),
+            rgba(0,0,0,.5) 45%,
+            rgba(0,255,0,.5) 55%,
+            rgba(0,255,0,.5) 56%,
+            rgba(0,0,0,.5) 56%,
+            rgba(0,0,0,.5)100%
+            );
+    /* make it big enough so when we slide it around still covers whole image */
+    background-size: 100% 300%;
+    background-repeat:   no-repeat;
+    /* start with the scan bar just off the left side */
+    background-position: center 84%;
+    -webkit-animation:   scan 3s infinite linear;
+}
+
+.result-description-container{
+    padding: 1.5em;
+    min-width:300px;
+}
+
+
+.result-position-number{
+    font-size: 32px !important;
+    margin-right: 10px;
+    background-color: #00c800!important;
+}
+
+img.wikipedia-icon{
+    width: 30px;
+    height:30px;
+    display:inline;
+}
+
+.error-icon{
+    width: 50px;
+    height:50px;
+    display:inline;
+}
+
+.name-link{
+    display: inline;
+    vertical-align: middle;
+}
+
+.disabled{
+    cursor: not-allowed;
+}
+
+.error-message{
+    color:black !important;
+    border: none!important;
+    background-image: radial-gradient(rgba(247, 227, 227, 0.14), #fff), radial-gradient(rgba(212, 33, 33, 0.08), #FFF) !important;
+    text-align: center;
+    }
+
+.error-message h1{
+    display: inline;
+    vertical-align: middle;
+    margin-left:7px;
+}
+
+.circle-button {
+    width: 100px!important;
+    height: 100px!important;
+    padding: 15px 18px!important;
+    font-size: 48px!important;
+    line-height: 1.33!important;
+    border-radius: 50px!important;
+}
+
+.send-btn-label{
+    display: block;
+}
+
+.description-text{
+    text-align: left;
+    font-size: 26px;
+    color: #838383;
+    margin-left:400px;
+    text-indent: -1em;
+}

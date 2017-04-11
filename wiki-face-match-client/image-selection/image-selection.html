@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-1">
+            <div ngf-drop ngf-select ng-model="file"  class="drop-box"
+                 ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
+                 accept="image/*" ngf-pattern="'image/*'">
+                <a href="">
+                    <h2>Choose/Drop File</h2>
+                </a>
+
+                <img ng-if="$ctrl.last_uploaded_image" ng-src="{{$ctrl.last_uploaded_image}}" alt="" class="last-uploaded-image"
+                     ng-click="$ctrl.on_image_selected($ctrl.last_uploaded_image, false);$event.stopPropagation();"
+                     ng-class="{'selected-image-highlight' : $ctrl.last_uploaded_image==$ctrl.selected_image}">
+            </div>
+
+        </div>
+
+
+
+        <div class="col-md-7" ng-class="{'gallery-container-loading' : (!$ctrl.imageUrls || $ctrl.imageUrls.length==0)}">
+            <img ng-repeat="img_url in $ctrl.imageUrls track by $index" class="gallery-image" ng-src="{{img_url}}" alt=""
+                 ng-click="$ctrl.on_image_selected( img_url,true)"
+                 ng-class="(img_url==$ctrl.selected_image) ? 'selected-image-highlight' : ''">
+        </div>
+    </div>
+</div>

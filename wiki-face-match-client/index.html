@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Wiki Face Match</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body ng-controller="AppController as appCtrl">
+
+<div ng-include="'header.html'"></div>
+
+<image-selection image-urls="appCtrl.image_urls" on-image-selected-callback="appCtrl.on_image_selected"></image-selection>
+
+<hr>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-2 col-md-offset-2">
+            <a ng-class="{disabled: appCtrl.is_disable_send_image()}" href="#" class="btn btn-success btn-xl circle-button play-btn" ng-click="appCtrl.send_image()">
+                <span class="glyphicon glyphicon-play play-icon"></span>
+            </a>
+            <label class="send-btn-label">Find Matches</label>
+        </div>
+
+        <div ng-if="appCtrl.match_results" class="col-md-5">
+            <h1>Face Matches:</h1>
+            <h4>Scanned {{appCtrl.match_results['scanned_image_count'] | number}} faces.</h4>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-3 col-md-offset-1">
+            <div class="selected-image-container" ng-class="{'scanning':appCtrl.is_loading}"
+                 ng-mouseover="appCtrl.show_boxed_image()" ng-mouseout="appCtrl.hide_boxed_image()">
+                <img ng-src="{{appCtrl.display_image}}" class="selected-image" alt="">
+            </div>
+            <h4 class="text-center" ng-if="appCtrl.selected_image">{{'Size: '+ appCtrl.get_image_base64_size(appCtrl.selected_image) +' MB'}}</h4>
+        </div>
+        <div ng-if="appCtrl.match_results" class="col-md-7">
+            <div class="row">
+                <div class="result-container col-md-4" ng-repeat="match_res in appCtrl.match_results.result">
+                    <img ng-src="{{'wiki_crop/' + match_res['image_path']}}" class="result-image" alt="">
+                    <div class="result-description-container">
+                        <h3><span class="badge badge-default result-position-number">#{{$index+1}}</span>Match Score: {{match_res.score*100 | number:2}}%</h3>
+                        <img src="img/wikipedia.png" alt="" class="wikipedia-icon">
+                        <a target="_blank" ng-href="https://en.wikipedia.org/wiki/{{match_res['name']}}"><h3 class="name-link">{{match_res['name']}}</h3></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="appCtrl.match_error_message" class="col-md-7">
+            <div class="alert alert-danger error-message">
+                <img src="img/error.png" alt="" class="error-icon">
+                <h1>{{appCtrl.match_error_message}}</h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br><br>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+<script src="lib/ng-file-upload-bower-12.2.13/ng-file-upload-shim.js"></script>
+<script src="lib/ng-file-upload-bower-12.2.13/ng-file-upload.js"></script>
+<script src="app.js"></script>
+<script src="image-selection/image-selection.js"></script>
+
+
+</body>
+</html>
