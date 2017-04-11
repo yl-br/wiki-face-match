@@ -12,7 +12,7 @@ Using python flask, it exposes an http api, with 2 methods:
 
 - post findMatches: 
 	Uses OpenFace and OpenCV2 libraries, to extract a face representation from an input image. Then it compares the given face representation to a pre-calculated representation matrix, composed by a Wikipedia image archive.
-After a distance is determined between the given representation and the Wikipedia representations, the top n images with the smallest distances are returned.
+After a distance is determined between the given representation and the Wikipedia representations, the top 3 images with the smallest distances are returned.
 
 
 ### wiki-face-match-client (client):
