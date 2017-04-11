@@ -1,6 +1,6 @@
 # wiki-face-match
 
-Wiki-Face-Match extracts a face representation from a given image.Then compares it against an archive of ~40,000 Wikipedia figures images, to find the best matching faces.
+Wiki-Face-Match extracts a face representation from a given image, then compares it against an archive of ~40,000 Wikipedia figures images, to find the best matching faces.
 
 
 ### wiki-face-match-api (api):
