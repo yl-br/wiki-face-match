@@ -60,7 +60,7 @@ def upload_image():
 
     try:
         image_representation = image_parser.get_face_representation(rgb_img, bounding_box)
-        image_id_distances, max_distance = image_matcher.get_top_faces_matches(image_representation, top_limit=3)
+        image_id_distances = image_matcher.get_top_faces_matches(image_representation, top_limit=3)
     except Exception as e:
         message = 'An error accord during image processing.'
         return (jsonify({'message': message}), 500)
@@ -71,7 +71,7 @@ def upload_image():
         matched_row = wiki_meta_df.ix[[image_id]]
         image_path = matched_row['full_path'].values[0]
         name = matched_row['name'].values[0]
-        score = 1 - distance/max_distance
+        score = 1 - distance/4 # 4.0 is the max distance.
         image_res = {'image_path':image_path, 'distance':distance, 'name':name, 'score':score}
         out_res_data['result'].append(image_res)
 

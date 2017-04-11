@@ -14,10 +14,9 @@ class ImageMatcher:
             distances.append((img_id, distance))
 
         distances.sort(key=lambda tup: tup[1])
-        max_distance = distances[-1][1]
         distances = distances[:top_limit]
 
-        return distances,max_distance
+        return distances
 
     def calculate_similarity_distance(self, rep1, rep2):
         d = rep1 - rep2
