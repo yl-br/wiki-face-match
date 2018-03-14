@@ -20,8 +20,7 @@ class ImageParser:
         return bounding_box
 
     def get_face_representation(self, rgb_image, bounding_box):
-        aligned_face = self.align.align(self.default_image_dimension, rgb_image, bounding_box,
-                                  landmarkIndices=openface.AlignDlib.OUTER_EYES_AND_NOSE)
+        aligned_face = self.align.align(self.default_image_dimension, rgb_image, bounding_box)
         if aligned_face is None:
             raise Exception("Unable to align image.")
         representation = self.net.forward(aligned_face)
