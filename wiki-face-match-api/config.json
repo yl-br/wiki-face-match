@@ -1,7 +1,7 @@
 {
   "representations_file_path":"wiki-reps-new.npy",
-  "open_face_models_dir_path":"/home/yuval/git/openface/models",
+  "open_face_models_dir_path":"git/openface/models",
   "wiki_meta_csv_path": "wiki-faces-meta.csv",
   "imdb_meta_csv_path" : "imdb-faces-meta.csv",
-  "max_image_upload_size_mb" : 20
+  "max_image_upload_size_mb" : 10
 }
